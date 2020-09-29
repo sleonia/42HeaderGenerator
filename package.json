@@ -7,7 +7,14 @@
     "example": "examples"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
   },
   "repository": {
     "type": "git",
@@ -21,6 +28,13 @@
   },
   "homepage": "https://github.com/sleonia/42HeaderGenerator#readme",
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "typescript": "^3.8.3",
+    "gts": "^2.0.2",
+    "@types/node": "^13.11.1"
+  },
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "prompts": "^2.3.2",
+    "typed-prompts": "^1.5.0"
   }
 }
