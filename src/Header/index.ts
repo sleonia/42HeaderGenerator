@@ -1,6 +1,8 @@
 import moment = require('moment');
 import { basename } from 'path';
 
+import { getRandomAuthor } from '../constants';
+
 import { HeaderInfo, headerTemplate } from './constants';
 
 const parseDate = (date: moment.Moment): string => {
@@ -9,11 +11,12 @@ const parseDate = (date: moment.Moment): string => {
 
 const setUpHeaderConfig = (filepath: string): HeaderInfo => {
   const user: string = process.env.USER || 'marvin';
+  const author: string = getRandomAuthor();
 
-  let content: HeaderInfo = {
+  const content: HeaderInfo = {
     filename: basename(filepath),
-    user: user, //get user from rand() all authors
-    mail: `<${user}@student.42.fr>`,
+    user: author,
+    mail: `<${author}@student.42.fr>`,
     createdDate: parseDate(moment()),
     updatedDate: parseDate(moment()),
     createdBy: user,
@@ -25,7 +28,7 @@ const setUpHeaderConfig = (filepath: string): HeaderInfo => {
 
 const setFieldValue = (header: string, field: string, value: string) => {
   const whitespacesCount: number = field.length - value.length;
-  return header.replace(field, value + (' '.repeat(whitespacesCount)));
+  return header.replace(field, value + ' '.repeat(whitespacesCount));
 };
 
 export const generateHeader = (filepath: string): string => {
@@ -40,5 +43,3 @@ export const generateHeader = (filepath: string): string => {
   newHeader = setFieldValue(newHeader, '$UPDATEDBY_', config.updatedBy);
   return newHeader;
 };
-
-// generateHeader('/Users/a18573961/Desktop/code/my/42HeaderGenerator/examples/main.c');

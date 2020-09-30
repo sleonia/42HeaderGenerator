@@ -1,6 +1,7 @@
 import { getAuthors } from './Authors';
-// import { makeHeader } from './Header';
 
-export const authors: string[] = getAuthors();
-// export let newHeader: string = makeHeader();
-// let newHeader: string = ;
+export const authors: string[] = getAuthors(process.argv[2]);
+
+export let getRandomAuthor = (): string => {
+  return authors[Math.floor(Math.random() * Math.floor(authors.length))];
+};

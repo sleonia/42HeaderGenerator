@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 
-export const getAuthors = (): string[] => {
+export const getAuthors = (authorFile: string): string[] => {
   let array: string[] = [];
 
-  array = fs.readFileSync(process.argv[2]).toString().split('\n');
+  array = fs.readFileSync(authorFile).toString().split('\n');
   if (array[array.length - 1] === '') {
     array.pop();
   } else {
