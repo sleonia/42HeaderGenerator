@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/sleonia/42HeaderGenerator#readme",
   "devDependencies": {
-    "typescript": "^3.8.3",
+    "@types/node": "^13.13.21",
     "gts": "^2.0.2",
-    "@types/node": "^13.11.1"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "moment": "^2.29.0"

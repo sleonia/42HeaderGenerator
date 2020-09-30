@@ -4,6 +4,8 @@ import { getFiles } from '../Files';
 
 export class App {
   public run(): void {
+    if (process.argv.length < 3) throw 'Error arguments';
+
     const files: string[] = getFiles(process.argv[3]);
 
     for (const file in files) {
