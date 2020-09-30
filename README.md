@@ -11,27 +11,32 @@ Example of header in `main.c`
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: a18573961 <a18573961@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 09:55:42 by sleonia           #+#    #+#             */
 /*   Updated: 2020/09/29 13:47:17 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 ```
-Example of author-file `author`
+Example of `author`
 ```
 sleonia
 dgreat
 ahiroko
 ```
 
-<!-- > How to using? -->
-> How to run?
+> How to using?  
+```
+# create author file
+$> ts-node src/  author %YOUR FOLDER OR FILE%
+```
+> How to install?
 ```
 $> git clone https://github.com/sleonia/42HeaderGenerator
 $> cd 42HeaderGenerator
 $> npm i
-$> ts-node src/index.ts
+# example of working
+$> ts-node src/  ./examples/author ./examples/main.c
 ```
 
 > Why i create this project?  
