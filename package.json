@@ -33,6 +33,7 @@
     "@types/node": "^13.11.1"
   },
   "dependencies": {
+    "moment": "^2.29.0",
     "prompt": "^1.0.0",
     "prompts": "^2.3.2",
     "typed-prompts": "^1.5.0"
