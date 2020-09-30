@@ -2,50 +2,45 @@ import * as fs from 'fs';
 import moment = require('moment');
 import { basename } from 'path';
 
+import { HeaderContent, headerTemplate } from './constants';
 
-export interface HeaderInfo {
-  filename: string;
-  user: string;
-  mail: string;
-  createdDate: moment.Moment;
-  updatedDate: moment.Moment;
-  createdBy: string;
-  updatedBy: string;
-}
+const parseDate = (date: moment.Moment): string => {
+  return date.format('YYYY/MM/DD HH:mm:ss');
+};
 
-const headerTemplate = `
-* ************************************************************************** *
-*                                                                            *
-*                                                        :::      ::::::::   *
-*   FILENAME____________________________               :+:      :+:    :+:   *
-*                                                    +:+ +:+         +:+     *
-*   By: USER____________________________           +#+  +:+       +#+        *
-*                                                +#+#+#+#+#+   +#+           *
-*   Created: CREATED_DATE___    by CREATED_BY_              #+#    #+#       *
-*   Updated: UPDATED_DATE___    by UPDATED_BY_           ###   ########.fr   *
-*                                                                            *
-* ************************************************************************** *
-`.substring(1);
-
-console.log(headerTemplate);
-
-export const makeHeader = (filepath: string): string => {
+const setUpHeaderConfig = (filepath: string): HeaderContent => {
   const user: string = process.env.USER || 'marvin';
 
-  let newHeader: HeaderInfo = {
+  let content: HeaderContent = {
     filename: basename(filepath),
-    user: user,
-    mail: `${user}<@student.42.fr>`,
-    createdDate: moment(),
-    updatedDate: moment(),
+    user: user, //get user from rand() all authors
+    mail: `<${user}@student.42.fr>`,
+    createdDate: parseDate(moment()),
+    updatedDate: parseDate(moment()),
     createdBy: user,
     updatedBy: user,
   };
 
-  console.log(newHeader);
-  return '';
-
-  
+  return content;
 };
 
-makeHeader('/Users/a18573961/Desktop/code/my/42HeaderGenerator/tmp.c');
+const setFieldValue = (header: string, field: string, value: string) => {
+  const whitespacesCount: number = field.length - value.length;
+  return header.replace(field, value + (' '.repeat(whitespacesCount)));
+};
+
+export const generateHeader = (filepath: string): string => {
+  const config = setUpHeaderConfig(filepath);
+
+  let newHeader: string = headerTemplate;
+  newHeader = setFieldValue(newHeader, '$FILENAME__________________________________', config.filename);
+  newHeader = setFieldValue(newHeader, '$AUTHOR________________________________', `${config.user} ${config.mail}`);
+  newHeader = setFieldValue(newHeader, '$CREATEDATE________', config.createdDate);
+  newHeader = setFieldValue(newHeader, '$CREATEDBY_', config.createdBy);
+  newHeader = setFieldValue(newHeader, '$UPDATEDATE________', config.updatedDate);
+  newHeader = setFieldValue(newHeader, '$UPDATEDBY_', config.updatedBy);
+  console.log(newHeader);
+  return newHeader;
+};
+
+generateHeader('/Users/a18573961/Desktop/code/my/42HeaderGenerator/examples/main.c');
