@@ -35,7 +35,9 @@ $> ts-node src/  author %YOUR FOLDER OR FILE%
 $> git clone https://github.com/sleonia/42HeaderGenerator
 $> cd 42HeaderGenerator
 $> npm i
-# example of working
+```
+> Example of working
+```
 $> ts-node src/  ./examples/author ./examples/main.c
 ```
 
