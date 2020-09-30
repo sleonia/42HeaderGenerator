@@ -1,6 +1,6 @@
 # 42HeaderGenerator
 > What is it?  
-Generator of headers and author file for
+Generator of headers for
 [21](https://21-school.ru/)/[42](https://www.42.fr/en/) code projects.
 
 > How does it looks?  
@@ -34,7 +34,6 @@ $> npm i
 $> ts-node src/index.ts
 ```
 
-> What i using for made of this project?
-```
-TypeScript
-```
+> Why i create this project?  
+1) I want to learning and training `typescript`
+2) I can using this tool in 42/21 school

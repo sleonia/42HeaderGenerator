@@ -1,17 +1,16 @@
-import * as fs from 'fs';
 import moment = require('moment');
 import { basename } from 'path';
 
-import { HeaderContent, headerTemplate } from './constants';
+import { HeaderInfo, headerTemplate } from './constants';
 
 const parseDate = (date: moment.Moment): string => {
   return date.format('YYYY/MM/DD HH:mm:ss');
 };
 
-const setUpHeaderConfig = (filepath: string): HeaderContent => {
+const setUpHeaderConfig = (filepath: string): HeaderInfo => {
   const user: string = process.env.USER || 'marvin';
 
-  let content: HeaderContent = {
+  let content: HeaderInfo = {
     filename: basename(filepath),
     user: user, //get user from rand() all authors
     mail: `<${user}@student.42.fr>`,
@@ -39,8 +38,7 @@ export const generateHeader = (filepath: string): string => {
   newHeader = setFieldValue(newHeader, '$CREATEDBY_', config.createdBy);
   newHeader = setFieldValue(newHeader, '$UPDATEDATE________', config.updatedDate);
   newHeader = setFieldValue(newHeader, '$UPDATEDBY_', config.updatedBy);
-  console.log(newHeader);
   return newHeader;
 };
 
-generateHeader('/Users/a18573961/Desktop/code/my/42HeaderGenerator/examples/main.c');
+// generateHeader('/Users/a18573961/Desktop/code/my/42HeaderGenerator/examples/main.c');

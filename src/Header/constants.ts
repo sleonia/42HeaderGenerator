@@ -1,4 +1,4 @@
-export interface HeaderContent {
+export interface HeaderInfo {
   filename: string;
   user: string;
   mail: string;
@@ -19,7 +19,5 @@ export const headerTemplate: string = `
 \/*   Created: $CREATEDATE________ by $CREATEDBY_       #+#    #+#             *\/
 \/*   Updated: $UPDATEDATE________ by $UPDATEDBY_      ###   ########.fr       *\/
 \/*                                                                            *\/
-\/* ************************************************************************** *\/
+\/* ************************************************************************** *\/\n
 `.substring(1);
-
-export const maxLength: number = 44;
