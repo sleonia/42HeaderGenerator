@@ -43,4 +43,7 @@ $> ts-node src/  ./examples/author ./examples/main.c
 
 > Why i create this project?  
 1) I want to learning and training `typescript`
-2) I can using this tool in 42/21 school
+2) I need this tool in 42/21 school
+
+> Stack of technology
+```TypeScript, Node.js```
